@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	h1=title
+	-	userVar = user
+	-	if(userVar)
+		form(method='post',action='/update')
+			fieldset
+				legend=title
+				div.clearfix
+					label 編號
+					div.input
+						input(name='user[id]',class='xlarge',value=user.id)
+					label 名稱
+					div.input
+						input(name='user[name]',class='xlarge',value=user.name)
+					label 描述
+					div.input
+						input(name='user[description]',class='xlarge',value=user.description)
+				div.actions
+					input(type='submit',value='儲存',class='btn primary')
+					button(type='reset',class='btn') 清除
+	-	else
+		form(method='post',action='/create')
+			fieldset
+				legend=title
+				div.clearfix
+					label 編號
+					div.input
+						input(name='user[id]',class='xlarge')
+					label 名稱
+					div.input
+						input(name='user[name]',class='xlarge')
+					label 描述
+					div.input
+						input(name='user[description]',class='xlarge')
+				div.actions
+					input(type='submit',value='新增',class='btn primary')
+					button(type='reset',class='btn') 清除

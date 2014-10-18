@@ -1,0 +1,40 @@
+extend layout
+
+block content
+	.navbar.navbar-default.navbar-fixed-top
+		.container
+			.navbar-header
+				button(class="navbar-toggle collapsed" data-target="navbar-collapse")
+					span(class="sr-only") Toggle navigation #{title}
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(href="#" class="navbar-brand") ithome 鐵人賽
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li.active
+						a(href="#") 首頁
+	
+	mixin users(users)
+		h1= title
+		fieldset
+			legend 以下是從 mysql 取出的使用者列表
+			a(href='/create', class='btn btn-primary') 新增使用者
+			table.mytable.table
+				th 編輯
+				th 名稱
+				th 描述
+				th 功能
+					each user in users
+						tr
+							td= user.id
+							td #{user.name}
+							td #{user.description}
+							td
+								a(href='/update/#{user.id}', class='btn btn-warning') 更新
+								&nbsp;
+								a(href='/delete/#{user.id}', class='btn btn-danger') 刪除
+			
+	- users = user
+	.container
+		mixin users(users)
