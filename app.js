@@ -12,8 +12,8 @@ var app = express();
 
 var pool = mysql.createPool({
     host : 'localhost',
-    user : 'root',
-    password : '1743775',
+    user : 'nodejs',
+    password : 'nodejs',
     database : 'demo_nodejs'
 });
 
